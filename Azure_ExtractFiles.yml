@@ -1,0 +1,32 @@
+# Extract files v1
+# Extract a variety of archive and compression files such as .7z, .rar, .tar.gz, and .zip.
+
+parameters:
+- name: 'archiveFilePatterns'
+  type: string   
+  default: '**/*.zip'
+
+- name: 'destinationFolder'
+  type: string   
+
+- name: 'cleanDestinationFolder'
+  type: boolean
+  default: true
+
+- name: 'overwriteExistingFiles'
+  type: boolean    
+  default: false
+
+- name: 'pathToSevenZipTool'
+  type: string    
+  default: ''
+
+
+steps:
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '${{parameters.archiveFilePatterns}}' 
+    destinationFolder: '${{parameters.destinationFolder}}' 
+    cleanDestinationFolder: '${{parameters.cleanDestinationFolder}}' 
+    overwriteExistingFiles: '${{parameters.overwriteExistingFiles}}' 
+    pathToSevenZipTool: '${{parameters.pathToSevenZipTool}}' 
